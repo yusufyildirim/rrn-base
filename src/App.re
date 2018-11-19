@@ -1,6 +1,11 @@
 open BsReactNative;
 
-let app = () =>
-  <View>
-    <Text> (ReasonReact.string("Let's get this party started!")) </Text>
-  </View>;
+let root = [%bs.obj {
+  root: { component: { name: "TestScreen" } }
+}];
+
+Screens.registerScreens();
+
+Navigation.onAppLaunched(() => {
+  Navigation.setRoot(root);
+})
